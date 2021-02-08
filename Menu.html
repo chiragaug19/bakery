@@ -1,0 +1,646 @@
+<html>
+<head>
+	<title>Menu</title>
+</head>
+
+<style>
+	body
+		{
+			background: url(https://images.unsplash.com/photo-1563245372-58fbd29afa7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+	  		background-size: cover;
+	  		background-attachment: fixed;
+	  		height: auto;
+			background-position: center;
+			color:white;
+			margin:0;
+			font-family: cursive;
+		}
+
+	.home
+		{
+			cursor: pointer;
+		}
+
+
+	.close 
+		{
+	  		color: white;
+	  		float: right;
+	  		font-size: 28px;
+	  		font-weight: bold;
+		}
+
+	.close:hover,.close:focus 
+		{
+	  		color: #000;
+	  		text-decoration: none;
+	  		cursor: pointer;
+		}
+
+	.modal 
+		{
+	  		display: none; 
+	  		position: fixed;
+	  		z-index: 1; 
+	  		padding-top: 100px;
+	  		left: 0;
+	  		top: 0;
+	  		width: 100%; 
+	  		height: 100%; 
+	  		overflow: auto; 
+	  		background-color: rgb(255,255,255,1); 
+	  		background-color: rgba(0,0,0,0.4);
+		}
+
+	.modal-header 
+		{
+	  		padding: 2px 16px;
+	  		background-color: #5cb85c;
+	  		color: white;
+		}
+
+	.modal-content
+		{
+			background-color: rgb(0,0,0,0.7);
+	  		margin: auto;
+	  		padding: 20px;
+	  		border: 1px solid #888;
+		}
+
+	.sel
+		{
+			padding:10px 10px;
+			font-size:20px;
+			float:right;
+			cursor: pointer;
+			margin-top: 140px;
+			margin-right: 130px;
+			background-color: #008080;
+			color: white;
+		}
+
+	.cartcontent div
+		{
+			margin-left: 0px;
+			display: block;
+	  		background-color: black;
+		}
+
+	.lst
+		{
+			margin-left: 0px;
+			display: block;
+	  		padding: 10px 10px;
+	  		background-color: black;
+	  		font-size: 25px;
+		}
+
+	a 
+		{
+	  		text-decoration: none;
+	  		color:white;
+		}
+
+	a:hover 
+		{
+	  		text-decoration: none;
+		}
+
+
+	.tab
+		{
+			overflow: hidden;
+			display:block;
+			background-color: #1d2951;
+			margin:0px;
+		}
+
+	.item 
+		{
+			font-family: monospace;
+			color: white;
+			background-color: #1d2951;
+			float:left;
+			cursor:pointer;
+			padding:20px 20px;
+			transition: ease 1s;
+			font-size:24px;	
+			display:block;
+			border: none;
+	  		outline: none;
+		}
+
+	.confirm
+		{
+			font-family: monospace;
+			color: white;
+			background-color: maroon;
+			float:all;
+			padding:10px 10px;
+			font-size:16px;
+			transition: all 0.5s;
+	  		cursor: pointer
+		}
+
+	.confirm span 
+		{
+	  		cursor: pointer;
+	  		display: inline-block;
+	  		position: relative;
+	  		transition: 0.5s;
+		}
+
+	.confirm span:after 
+		{
+	  		content: '\00bb';
+	  		position: absolute;
+	  		opacity: 0;
+	  		top: 0;
+	  		right: -10px;
+	  		transition: 0.5s;
+		}
+
+	.confirm:hover span 
+		{
+	  		padding-right: 25px;
+		}
+
+	.confirm:hover span:after 
+		{
+	  		opacity: 1;
+	  		right: 0;
+		}
+
+	.item:hover
+		{
+			background-color: brown;
+			border:none;
+		}
+
+	.item.active
+		{
+			background-color: #007070;
+		}
+
+	.content,.cartcontent
+		{	
+			
+			background-color:#002147;
+			border:none;		
+		}
+
+	input[type=number]::-webkit-inner-spin-button 
+		{
+	    opacity: 1
+		}
+	
+</style>
+
+<body>
+	<div style="background-color: rgb(255,255,255,0.1); display: inline-block; width: 100%; ">
+	<div style="background-color: darkcyan;margin-top: 0px; size: 100%;overflow:hidden; width:100%";>
+		<div style="float:left; padding:5px; padding-left:50px;"><span class="home" onclick="window.open('Homepage.html')"><h1>The HotPot Bakery</h1></span></div>
+		<div style="float:right; font-size:20px; padding:40px;"><a href="Log In.html" target="_self">Log In</a>/<a href="Sign Up.html" target="_self">Sign Up</a></div>
+	</div>
+	<br><br>
+	<p>
+	<center><h2 style="color:white;"><marquee>ENJOY THE WIDE RANGE OF VARIETY AND FRESHLY PREPARED CAKES, PASTRIES AND COOKIES.</marquee></h2></center>
+	</p>
+	<br><br>
+
+	<div style=" width:60%; float:left; background-color:black; box-shadow: 0 8px 16px 0 rgba(0,0,0,10), 0 6px 20px 0 rgba(0,0,0,10);">
+
+	<div class="tab">
+		<button class="item" onclick="openMenu(event,'cake')" id="defaultOpen">
+		Cakes</button>
+
+		<button class="item" onclick="openMenu(event,'pastry')">
+		Pastries</button>
+
+		<button class="item" onclick="openMenu(event,'cookie')">
+		Cookies</button>
+	</div>
+
+
+	<div id="cake" class="content">
+		
+		<p class='lst'><button class="sel" onclick="modaldisp('fruity')">Select</button><img src=" https://images.unsplash.com/photo-1568573847569-8e5e99ddeb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width=400 height=300/><br> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp JUST FRUITY </p>
+			
+			<div class='modal' id='fruity'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('fruity').style.display='none'">&times;</span>
+      				<h2>Just Fruity</h2>
+    			</div>
+    	
+    		<div class="modal-content">
+    			<p>Weight:<br>
+      			<input name='weight' type='radio' value='150'>200 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 150<br>
+      			<input name='weight' type='radio' value='200'>250 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 200<br> 
+      			<input name='weight' type='radio' value='350'>400 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 350<br>
+      			<input name='weight' type='radio' value='450'>500 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 450<br>
+      			</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qfruity' type='number' value=1  min=1 max=5>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 5.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377<label id='cfruity'></label> &nbsp&nbsp <button onclick='cal("qfruity","cfruity")'>Calculate</button></p>
+      			<button onclick='create("Just Fruity","qfruity");document.getElementById("fruity").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+		
+		<p class='lst'><button class="sel" onclick="modaldisp('choco')">Select</button><br><img src="https://images.unsplash.com/photo-1582570675095-9b679953577e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width=400 height=300> <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CHOCO DE CAFE </p>
+			
+			<div class='modal' id='choco'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('choco').style.display='none'">&times;</span>
+      				<h2>Choco De Cafe</h2>
+    			</div>
+    		
+    		<div class="modal-content">
+    			<p>Weight:<br>
+      			<input name='weight' type='radio' value='150'>200 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 150<br>
+      			<input name='weight' type='radio' value='200'>250 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 200<br> 
+      			<input name='weight' type='radio' value='350'>400 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 350<br>
+      			<input name='weight' type='radio' value='450'>500 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 450<br>
+      			</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qchoco' type='number' value=1  min=1 max=5>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 5.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cchoco'></label> &nbsp&nbsp <button onclick='cal("qchoco","cchoco")'>Calculate</button></p>
+      			<button onclick='create("Choco De Cafe","qchoco");document.getElementById("choco").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'> <button class="sel" onclick="modaldisp('truffle')">Select</button><br><img src="https://www.onlinedelivery.in/images/thumbnails/424/424/detailed/29/gh.jpg" width=400 height=300><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbspTRUFFLE TORTE</p>
+
+			<div class='modal' id='truffle'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('truffle').style.display='none'">&times;</span>
+      				<h2>Truffle Torte</h2>
+    			</div>
+    		
+    		<div class="modal-content">
+    			<p>Weight:<br>
+      			<input name='weight' type='radio' value='150'>200 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 150<br>
+      			<input name='weight' type='radio' value='200'>250 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 200<br> 
+      			<input name='weight' type='radio' value='350'>400 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 350<br>
+      			<input name='weight' type='radio' value='450'>500 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 450<br>
+      			</p>
+
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qtruffle' type='number' value=1  min=1 max=5>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 5.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='ctruffle'></label> &nbsp&nbsp <button onclick='cal("qtruffle","ctruffle")'>Calculate</button></p>
+      			<button onclick='create("Truffle Torte","qtruffle");document.getElementById("truffle").style.display="none";'class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('velvet')">Select</button><br><img src="https://www.telegraph.co.uk/content/dam/recipes/2020/03/06/TELEMMGLPICT000225955887_trans_NvBQzQNjv4Bq0pnPhQHCKLs6Zs8HFVbCRfAW1VMtAeeMa0kMGgcJ8Qw.jpeg"; width="400"; height="300";><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp RED VELVET </p>
+		
+			<div class='modal' id='velvet'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('velvet').style.display='none'">&times;</span>
+      				<h2>Red Velvet</h2>
+    			</div>
+    		
+    		<div class="modal-content">
+    			<p>Weight:<br>
+      			<input name='weight' type='radio' value='150'>200 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 150<br>
+      			<input name='weight' type='radio' value='200'>250 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 200<br> 
+      			<input name='weight' type='radio' value='350'>400 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 350<br>
+      			<input name='weight' type='radio' value='450'>500 gms &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price: &#8377 450<br>
+      			</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qvelvet' type='number' value=1  min=1 max=5>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 5.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cvelvet'></label> &nbsp&nbsp <button onclick='cal("qvelvet","cvelvet")'>Calculate</button></p>
+      			<button onclick='create("Red Velvet","qvelvet");document.getElementById("velvet").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+	</div>
+		
+	<div id="pastry" class="content">
+		<p class='lst'> <button class="sel" onclick="modaldisp('nut')">Select</button><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/maladihhmvwdk4nrujpb"; width="400"; height="300";><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CHOCO NUT</p> 
+
+			<div class='modal' id='nut'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('nut').style.display='none'">&times;</span>
+      				<h2>Choco Nut</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 80</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qnut' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cnut'></label> &nbsp&nbsp <button onclick='calp(80,"qnut","cnut")'>Calculate</button></p>
+      			<button onclick='createp(80,"Choco Nut","qnut");document.getElementById("nut").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('irish')">Select</button><img src="https://lh3.googleusercontent.com/pw/ACtC-3c2o4WN1fAGc_tPAZysY__0-OiFvaCqvPuNPvRcqiHnLZu_SUFGJCmZj8WHvwriIIToRhM043Z5V5m5b0yoRAL1cv1oOAN-Kb8PykFG362f-lHlt9oNoRnv6I4Sa8feAcwgf5bjOns00NdcZZW8ptWR=w720-h618-no?authuser=0"; width="400"; height="300";><br>&nbsp &nbsp &nbsp &nbsp IRISH CHOCOMANIA </p>
+			<div class='modal' id='irish'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('irish').style.display='none'">&times;</span>
+      				<h2>IRISH CHOCOMANIA</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 90</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qirish' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cirish'></label> &nbsp&nbsp <button onclick='calp(90,"qirish","cirish")'>Calculate</button></p>
+      			<button onclick='createp(90,"Irish ChocoMania","qirish");document.getElementById("irish").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'> <button class="sel" onclick="modaldisp('chip')">Select</button><img src="https://media.bakingo.com/sites/default/files/styles/product_image/public/Chocochip-02-A.jpg?tr=h-351,w-468"; width="400"; height="300";> <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CHOCO CHIPS</p>
+			<div class='modal' id='chip'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('chip').style.display='none'">&times;</span>
+      				<h2>Choco Chips</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 95</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qchip' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cchip'></label> &nbsp&nbsp <button onclick='calp(95,"qchip","cchip")'>Calculate</button></p>
+      			<button onclick='createp(95,"Choco Chips","qchip");document.getElementById("chip").style.display="none";' class=> Add to Cart</button><br>
+      		</div>
+      		</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('opera')">Select</button><img src="https://media.bakingo.com/sites/default/files/styles/product_image/public/Choco-Ferrero-Rocher-pastry-30122017.jpg?tr=h-351,w-468" width=400; height="300";><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp  L'OPERA </p></p>
+			<div class='modal' id='opera'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('opera').style.display='none'">&times;</span>
+      				<h2>L'OPERA</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 100</p>
+      			<p>Type: &nbsp&nbsp&nbsp&nbsp
+      			<input name='anda' type='radio' value='Egg'>Egg &nbsp&nbsp&nbsp&nbsp <input name='anda' type='radio' value='Eggless'>Eggless
+      			</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qopera' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='copera'></label> &nbsp&nbsp <button onclick='calp(100,"qopera","copera")'>Calculate</button></p>
+      			<button onclick='createp(100,"L OPERA","qopera");document.getElementById("opera").style.display="none";' class=> Add to Cart</button><br>
+			</div>
+			</div>
+	</div>
+
+	
+	<div id="cookie" class="content">
+
+		<p class='lst'> <button class="sel" onclick="modaldisp('oat')">Select</button><img src="https://res.cloudinary.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/dv2p7rg8o7vz01vepphb"; width=400px; height="300px";><br>&nbsp &nbsp &nbsp &nbsp &nbsp OATMEAL RAISIN</p>
+			<div class='modal' id='oat'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('oat').style.display='none'">&times;</span>
+      				<h2>Oatmeal Raisin</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 100 &nbsp&nbsp&nbsp&nbsp Quantity: 250g Boxes</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qoat' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='coat'></label> &nbsp&nbsp <button onclick='calp(100,"qoat","coat")'>Calculate</button></p>
+      			<button onclick='createc(100,"Oatmeal Raisin","qoat");document.getElementById("oat").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('tutti')">Select</button><img src="https://5.imimg.com/data5/TM/NQ/GLADMIN-48482029/tutti-frutti-cookies-250x250.png"; width="400px";height="300px"><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp TUTTI FRUITTI </p>
+			<div class='modal' id='tutti'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('tutti').style.display='none'">&times;</span>
+      				<h2>Tutti Fruiti</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 120 &nbsp&nbsp&nbsp&nbsp Quantity: 250g Boxes</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qtutti' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='ctutti'></label> &nbsp&nbsp <button onclick='calp(120,"qtutti","ctutti")'>Calculate</button></p>
+      			<button onclick='createc(120,"Tutti Frutti","qtutti");document.getElementById("tutti").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('pea')">Select</button><img src="https://images.unsplash.com/photo-1564988208918-44ed48c1b236?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"; width="400px" ; height="300px";><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PEANUT BUTTER </p>
+			<div class='modal' id='pea'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('pea').style.display='none'">&times;</span>
+      				<h2>Peanut Butter</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 90 &nbsp&nbsp&nbsp&nbsp Quantity: 250g Boxes</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qpea' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cpea'></label> &nbsp&nbsp <button onclick='calp(90,"qpea","cpea")'>Calculate</button></p>
+      			<button onclick='createc(90,"Peanut Butter","qpea");document.getElementById("pea").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+
+		<p class='lst'><button class="sel" onclick="modaldisp('pista')">Select</button><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRSCpnF-QtRQqmHFTEwYLYuqwb_k3BWPo_7tQ&usqp=CAU"; width="400px"; height="300px"><br>&nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp PISTA BADAAM </p>
+			<div class='modal' id='pista'>
+				<div class="modal-header">
+      				<span class="close" onclick="document.getElementById('pista').style.display='none'">&times;</span>
+      				<h2>Pista Badaam</h2>
+    			</div>
+    		<div class="modal-content">
+    			<p>Price: &#8377 140 &nbsp&nbsp&nbsp&nbsp Quantity: 250g Boxes</p>
+      			<p>Quantity:&nbsp&nbsp<input id='qpista' type='number' value=1  min=1 max=10>&nbsp&nbsp(Minimum Value is 1 and Maximum Value is 10.)</p>
+      			<p>Total Cost: &nbsp&nbsp &#8377 <label id='cpista'></label> &nbsp&nbsp <button onclick='calp(140,"qpista","cpista")'>Calculate</button></p>
+      			<button onclick='createc(140,"Pista Badaam","qpista");document.getElementById("pista").style.display="none";' class=> Add to Cart</button><br>
+    		</div>
+			</div>
+	
+	</div>
+	</div>
+
+	<div style="float:right;width:25%; background-color: #002147;box-shadow: 0 8px 16px 0 rgba(0,0,0,10), 0 6px 20px 0 rgba(0,0,0,10);">
+	<div class="tab">
+		<center><p style="font-family: monospace;color: white;background-color:inherit;	float:all;font-size:24px;">Cart Items</p></center>
+	</div>
+    <div id='cart'; class="cartcontent">
+        <center><p id="cval" style="font-size: 20px;">Cart Value: </p></center>
+        <form name="final" id='final' action="cart.php" method="POST"> 
+        	<input type="hidden" name="count" id="count">
+        <center><button type="submit" form="final" class="confirm" id='submit' onclick="check_up()"><span>Confirm Order</span></button></center>
+    	</form>
+    </div>
+    </div>
+</div>
+</div>
+</body>
+
+<script>
+	var ident=0;
+	var carval=0;
+	var arr=[0];
+	function cal(q,c)
+	{
+		var w=document.getElementsByName('weight');
+		for(i = 0; i < w.length; i++) 
+		{ 
+	            	if(w[i].checked) 
+			{
+	            	wt=w[i].value; 
+			}
+	        	} 
+		var qt=Number(document.getElementById(q).value);
+		document.getElementById(c).innerHTML=qt*wt;
+	}
+
+	function calp(p,q,c)
+	{
+		var qt=Number(document.getElementById(q).value);
+		document.getElementById(c).innerHTML=p*qt;
+	}
+
+	function create(n,q)
+	{
+		ident=ident+1;
+		var w=document.getElementsByName('weight');
+		for(i = 0; i < w.length; i++) 
+		{ 
+	            	if(w[i].checked) 
+			{
+	            	wt=(w[i].value); 
+			}
+	    }
+	    var e=document.getElementsByName('anda');
+	    for(i=0;i < e.length; i++)
+	    {
+	    			if(e[i].checked)
+	    	{
+	    			cat=e[i].value;
+	    	}
+	    } 
+		var qt=Number(document.getElementById(q).value);
+		var ct=qt*wt;
+		wt=Number(wt)+50;
+		carval=carval+ct;
+		arr.push(ct);
+		var d=document.createElement('DIV');
+		d.setAttribute("id",ident);
+		d.innerHTML='<p><u><b>'+n+'</b></u><br>Quantity: '+qt+'	Weight: '+wt+'	Cost: &#8377 '+ct+'		'+cat+' &nbsp &nbsp <button onclick=\'del("'+String(ident)+'")\'> Remove</button></p>';
+		document.getElementById('cart').append(d);
+		document.getElementById('cval').innerHTML='Cart Value:&nbsp&nbsp &#8377 '+carval;
+
+		var fin=document.createElement('INPUT');
+		fin.setAttribute("type","hidden");
+		fin.setAttribute("id",ident);
+		fin.setAttribute("name",ident);
+		str=String(n)+'	'+String(qt)+'No. '+wt+'gms '+cat;
+		fin.setAttribute("value",str);
+		document.getElementById('final').append(fin);
+
+		document.getElementById('count').value=ident;
+		document.getElementById('submit').disabled=false;
+	}
+
+	function createp(p,n,q)
+	{
+		ident=ident+1;
+		var qt=Number(document.getElementById(q).value);
+		var ct=qt*p;
+		var d=document.createElement('DIV');
+		var e=document.getElementsByName('anda');
+	    for(i=0;i < e.length; i++)
+	    {
+	    			if(e[i].checked)
+	    	{
+	    			cat=e[i].value;
+	    	}
+	    } 
+		carval=carval+ct;
+		arr.push(ct);
+		d.setAttribute("id",ident);
+		d.innerHTML='<p><u><b>'+n+'</b></u><br>Quantity: '+qt+'	Cost: &#8377 '+ct+'		'+cat+'<br><button onclick=\'del("'+String(ident)+'")\'>Remove</button></p>';
+		document.getElementById('cart').append(d);
+		document.getElementById('cval').innerHTML='Cart Value:&nbsp&nbsp &#8377 '+carval;
+
+		var fin=document.createElement('INPUT');
+		fin.setAttribute("type","hidden");
+		fin.setAttribute("id",ident);
+		fin.setAttribute("name",ident);
+		str=String(n)+'	'+String(qt)+'No. '+cat;
+		fin.setAttribute("value",str);
+		document.getElementById('final').append(fin);
+	
+		document.getElementById('count').value=ident;
+		document.getElementById('submit').disabled=false;
+		m.style.display='hidden';
+	}
+
+	function createc(p,n,q)
+	{
+		ident=ident+1;
+		var qt=Number(document.getElementById(q).value);
+		var ct=qt*p;
+		var d=document.createElement('DIV');
+		carval=carval+ct;
+		arr.push(ct);
+		d.setAttribute("id",ident);
+		d.innerHTML='<p><u><b>'+n+'</b></u><br>Quantity: '+qt+'	Cost: &#8377 '+ct+'<br><button onclick=\'del("'+String(ident)+'")\'>Remove</button></p>';
+		document.getElementById('cart').append(d);
+		document.getElementById('cval').innerHTML='Cart Value:&nbsp&nbsp &#8377 '+carval;
+
+		var fin=document.createElement('INPUT');
+		fin.setAttribute("type","hidden");
+		fin.setAttribute("id",ident);
+		fin.setAttribute("name",ident);
+		str=String(n)+'	'+String(qt)+'No. ';
+		fin.setAttribute("value",str);
+		document.getElementById('final').append(fin);
+
+		document.getElementById('count').value=ident;
+		document.getElementById('submit').disabled=false;
+	}
+
+	function del(x)
+	{	
+		for(i=0;i<2;i++){document.getElementById(x).remove();}
+		carval=carval-arr[x];
+		document.getElementById('cval').innerHTML='Cart Value:&nbsp&nbsp &#8377 '+carval;
+	}
+
+	function modaldisp(id)
+	{
+		m=document.getElementById(id);
+		m.style.display='block';
+	}
+
+	function openMenu(evt,itemName)
+	{
+		var i,tc,tl;
+		tc=document.getElementsByClassName('content');
+		for(i=0;i<tc.length;i++)
+		{
+			tc[i].style.display="none";
+		}
+		tl=document.getElementsByClassName('item');
+		for(i=0;i<tl.length;i++)
+		{
+			tl[i].className=tl[i].className.replace(" active","");
+		}
+		document.getElementById(itemName).style.display="block";
+		evt.currentTarget.className += " active";
+	}
+
+	function check_up()
+	{	
+		document.getElementById('submit').disabled=true;
+		if(carval==0)
+		{
+			window.alert("Cart is Empty.");
+			document.getElementById('submit').disabled=true;
+  		}
+
+  		else
+  		{	
+  		document.getElementById('submit').disabled=false;
+  		}
+	}
+	document.getElementById("defaultOpen").click();
+</script>
+</html> 
