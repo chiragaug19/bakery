@@ -1,0 +1,241 @@
+<html>
+<head>
+	<title>Homepage</title>
+</head>
+<style>
+	body
+	{
+		background-image:url("https://images.unsplash.com/photo-1581362716668-90cdec6b4882?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+		background-attachment: fixed;
+		background-color:black;
+		background-repeat: no-repeat;
+		background-size: cover;
+		color:white;
+		margin:0;
+	}
+
+	.div1
+	{	
+		position: relative;
+		border-left: 5px solid red;
+  		float:left;
+  		margin-left: 100px;
+	}
+
+ 	.div2
+	{
+		margin-right: 100px;
+		background-color: red;
+		float:right;
+	}
+
+
+	a 
+	{
+  		text-decoration: none;
+  		color:white;
+	}
+
+	a:hover 
+	{
+  		text-decoration: none;
+	}
+
+
+	.opt 
+	{
+  		display: block;
+  		padding: 10px 30px;
+  		font: 20px Monospace,Lucidia-Console;
+  		background-color: #FFDEAD;
+  		transition-timing-function: ease-in-out;
+  		transition: transform 5s;
+
+	}
+
+	.opt:hover
+	{
+		background-color: white;
+		color:black;
+		transform: translate(100px);
+	}
+
+	.opt1 
+	{
+		text-decoration: none;
+		color: black;
+		cursor: pointer;
+	}
+
+	.bottom
+	{
+		font-size: 20px;
+  		clear:both;
+    	overflow: hidden;
+    	background-color: #333;
+    	color: #f2f2f2;
+	}
+
+
+
+</style>
+<body>
+
+<center>
+
+<div>
+	<div class="mySlides ">
+		<img src="1.jpg" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img src="2.jpg" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img  src="3.jpg" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img src="https://images.unsplash.com/photo-1516919549054-e08258825f80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img src="4.jpg" width="1519px" height="500";>
+  	</div>
+
+	<div class="mySlides ">
+  		<img  src="https://images.unsplash.com/photo-1578125689787-50a5c9fc6b2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img  src="https://images.unsplash.com/photo-1581978392302-136a082482e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+  		<img src="https://images.unsplash.com/photo-1514077583608-aedd9ec18c40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+		<img src="https://images.unsplash.com/photo-1574376824322-69fbff1fbcb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="1519px" height="500";>
+	</div>
+
+	<div class="mySlides ">
+ 		<img src="5.jpg" width="1519px" height="500px">
+	</div>
+
+	<div class="mySlides ">
+ 		<img src="https://images.unsplash.com/photo-1486893732792-ab0085cb2d43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1131&q=80" width="1519px" height="500";>
+	</div>
+</div>
+
+<br>
+
+<div>
+<p style="font-size: 45px; font-family: monospace;text-align: center; border:1px cyan solid ; border-radius:32px; overflow: hidden;">The HotPot Bakers</p></center>
+<br><br><br>
+	<div class="div1">	
+		<p class="opt"><a class="opt1" onclick="window.open('Menu.html')">Menu</a></p><br><br>
+		<p class="opt"><a class="opt1" onclick="scrollto('outlet')">View Outlets</a></p><br><br>
+		<p class="opt"><a class="opt1" onclick="scrollto('about')">About Us</a></p><br><br>	
+		<p class="opt"><a class="opt1" onclick="scrollto('foot')">Contact Us</a></p>
+	</div>
+
+	<div class="div2">
+		<img src="https://drive.google.com/thumbnail?id=1TlLQqJwye3F269tQfiWSbI-yN5cUPncb" style="width:500px;height:500px;">
+	</div>
+
+	<div style="height:200px;width:200px;clear:both; display: inline-block; width: 100%; overflow: hidden;">
+	</div> 
+
+<div id='outlet' style="clear:both ;display:block; position: relative; margin-left:50px; width: 90%; overflow: hidden;">
+	<p style="font-size: 35px; border: 1px solid pink; background-color: #FFDEAD; color: black; text-align: center;">Our Locations</p>
+
+	<div id="map1" style="width:40%; height: 400px; float:right; clear:both;"></div>
+	<div style="margin-left:100px; margin-top: 100px;"><p style="font-size: 25px; font-family: sans-serif;">Location 1:</p>
+	<p style="font-family: monospace; font-size: 15px;">Shop 7&8, ShravastiI Building, <br>Near Inorbit Mall, Off, New Link Rd, <br>Sunder Nagar, Malad West, <br>Mumbai, Maharashtra 400064</div> 
+
+	<div style="height:100px;width:100px;clear:both;"></div>
+
+	<div id="map2" style="width:40%; height: 400px; float:right; clear:both;"></div>
+	<div style="margin-left:100px; margin-top: 100px;"><p style="font-size: 25px; font-family: sans-serif;">Location 2:</p>
+	<p style="font-family: monospace; font-size: 15px;"> Upvan Building, Shop No. 6 & 7, Metro Station, <br>near D.N.Nagar, Madhuban Colony,<br> D.N.Nagar, Andheri West,<br> Mumbai, Maharashtra 400053</p></div> 
+
+</div>
+
+<div style="height:200px;width:200px;clear:both;"></div>
+
+<div id='about' style="clear:both ;display:block; position: relative; margin-left:50px; width: 90%; overflow: hidden;">
+	<div><p style="font-size: 35px; border: 1px solid pink; background-color: #FFDEAD; color: black; text-align: center; " >About Us</p></div>
+	<p style="padding-left:20px; padding-right:20px; font-family: Comic Sans MS;">
+	The 'HotPot' Bakery is an American-style pastry kitchen established in 2004 to bring the bona fide taste of American home heating to London. The organization opened its first branch on Portobello Road in Notting Hill in 2007 and has since propelled a further six branches crosswise over London and Surrey in South Kensington, Soho, Spitalfields, Islington and Richmond. It additionally has an establishment nearness in the Middle East with four branches effectively working effectively in Dubai and Saudi Arabia with further dispatches arranged.
+	</p>
+
+	<p style="padding-left:20px; padding-right:20px; font-family: Comic Sans MS;">
+	Chirag Shrivastava, the organization organizer and Managing Director, built up The 'HotPot' Bakery idea in light of what he saw as an absence of any spots in London to appreciate the essence of genuinely credible American-style preparing.
+	</p>
+
+	<p style="padding-left:20px; padding-right:20px; font-family: Comic Sans MS;">
+	His vision for the pastry shop and love of American preparing happened to be something that numerous inside London, from over the UK and all around came to share. Today the pastry kitchen has turned into an exceedingly celebrated and famous brand.
+	</p>
+
+	<p style="padding-left:20px; padding-right:20px; font-family: Comic Sans MS;">
+	One of the key factors in The 'HotPot' Bakery's prosperity has been its ethos that cakes taste best when they've been naturally heated utilizing the very same fixings and methods as those utilized in home preparing. Consequently, every single 'HotPot' Bakery branch has its own kitchen and a group of occupant master pastry specialists and cake decorators.
+	<br>
+	This empowers the pastry shop to heat to arrange and to just serve its clients cakes that have been naturally prepared the plain same day.
+	</p>
+</div>
+</div>
+
+<div style="height:200px;width:200px;clear:both;"></div>
+<footer id="foot" class="bottom" >
+<div style="
+   padding-left: 50px;
+   float: left;">
+  <p><b>Contact Us</b><p> 
+  <p>Mail:hotpotbakery@gmail.com</p>
+  <p> Telephone:70471118079</p>
+  <p>Fax:70471118099</p>
+</div>
+
+<div style="padding-right: 50px;   float: right;	text-align: right;">
+  <p><b>Connect With Us</b><p> 
+        <p><a href="http://www.facebook.com/profile.php?id=">Facebook</a></p>
+        <p><a href="http://twitter.com/">Twitter</a></p>
+        <p><a href="http://youtube.com/">YouTube</a></p></center>
+</div>
+</footer>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1;}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 2000);
+}
+
+function Gmaps()
+{
+	var l1= new google.maps.Map(document.getElementById("map1"), {center:{lat: 23.214680, lng:77.435052},zoom:5});
+	var l2= new google.maps.Map(document.getElementById("map2"), {center:{lat: 19.074966, lng:72.878568},zoom:5});
+}
+
+function scrollto(id)
+{	
+	var elmnt = document.getElementById(id);
+  	elmnt.scrollIntoView({behavior:'smooth'});
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=Gmaps"></script>
+
+</body>
+</html>
