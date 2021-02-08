@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title>Log In</title>
+</head>
+<script>
+	function check_up()
+	{
+  		document.getElementById('submit').disabled=false;	
+	}
+	function login()
+	{
+		var emob=document.log.emob.value;
+		var pass=document.log.pass.value;
+
+		var mregex=/^[6-9]\d{9}$/;
+		var check1=mregex.test(emob);
+
+		var eregex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		var check2=eregex.test(emob);
+
+		document.getElementById('submit').disabled=true;
+
+
+		if(emob=="")
+		{
+			window.alert("Please Enter an Email or Mobile number.")
+			document.log.emob.focus();
+		}
+
+		else if(check1==false&&check2==false)
+		{
+			window.alert("Please Enter a valid Email or Mobile number.")
+			document.log.emob.focus();
+		}
+
+		else if(pass=="")
+		{
+			window.alert("Please Enter a Password.")
+			document.log.pass.focus();
+		}
+
+		else if(pass.length<6)
+		{
+			window.alert("Password must contain atleast Six characters.")
+			document.log.pass.focus();
+		}
+		else
+		{
+			document.getElementById('submit').disabled=false;
+		}
+	}
+</script>
+
+<style>
+
+body
+{
+  background: url(no-recipe-required-pound-cake-30082016.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  background-position: center;
+}
+
+.transbox
+{ 
+border: 1px solid white;
+padding-top: 50px;
+padding-right: 80px;
+padding-bottom: 50px;
+padding-left: 80px;
+margin: 30px;
+background-color: rgb(255,255,255,0.7);
+border: 1px solid black;
+}
+
+</style>
+<body>
+	
+  	<div class="transbox" style="margin-left: 450px; margin-right:450px; margin-top:180px">
+	<fieldset>
+		<legend align=center><u><h3>Log in Details</h3></u></legend><br>
+		<center>
+		<form name="log" method="POST" action="Log.php">
+			<label for="emob">Enter Email/Mobile Number: </label><br>
+			<input name="emob" type="text" id="emob" size=20 onchange="check_up()"><br><br>
+			<label for="email">Password:</label><br>
+			<input name="pass" type="password" id="pass" size=20 onchange="check_up()"><br><br>
+			<input style="background-color: blue; color: white; border-color: black; cursor:pointer;" type="submit" id="submit" onclick="login()"></input> &nbsp &nbsp
+			<input style="background-color: red;  color: white; border-color: black; cursor:pointer;" type="reset" onclick="log.reset()"></input><br><br>
+		</form>
+		</center>
+	</fieldset><br><br>
+	<center>	
+	</center>
+  </div>
+</body>
+<p><center>Don't have an account? <a href="Sign Up.html">Click here</a> to Sign Up</center></p>
+<p id="done"></p>
+</html>

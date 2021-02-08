@@ -1,0 +1,293 @@
+<html>
+<head>
+	<title>Almost There!</title>
+</head>
+<style>
+	body
+	{
+		background: url(no-recipe-required-pound-cake-30082016.jpg);
+		background-attachment: fixed;
+  		background-repeat: no-repeat;
+  		background-size: cover;
+  		height: auto;
+  		background-position: center;
+		font-family: cursive;
+	}
+	.transbox
+	{
+		display: inline-block;
+		width:75%; 
+		padding:20px;
+		background-color: rgba(255,255,255,0.7);
+		border: 1px solid black;
+	}
+
+	.go
+	{
+		clear: both;
+		font-family: monospace;
+		color: white;
+		background-color: maroon;
+		padding:10px 10px;
+		font-size:16px;
+		transition: all 0.5s;
+  		cursor: pointer;
+  		float:right;
+  		display:inline-block;
+	}
+
+	.go span 
+	{
+  		cursor: pointer;
+  		display: inline-block;
+  		position: relative;
+  		transition: 0.5s;
+	}
+
+
+	.go span:after 
+	{
+  		content: '\00bb';
+  		position: absolute;
+  		opacity: 0;
+  		top: 0;
+  		right: -10px;
+  		transition: 0.5s;
+	}
+
+	.go:hover span 
+	{
+  		padding-right: 25px;
+	}
+
+	.go:hover span:after 
+	{
+  		opacity: 1;
+  		right: 0;
+	}
+
+</style>
+
+<script>
+		function check_up()
+		{
+  		document.getElementById('go').disabled=false;	
+  		document.getElementById('go2').disabled=false;
+		}
+
+		function validation()
+		{
+			var otyp=document.getElementsByName('otyp');
+			for(i=0;i<otyp.length;i++)
+			{
+				if(otyp[i].checked)
+				{
+					ot=otyp[i].value;
+				}
+			}
+
+			if(ot=='del')
+			{
+				var name= document.add.name.value;
+				var nregex=/^[A-Za-z]+[ ][A-Za-z]+$/;
+				var check1=nregex.test(name);
+				
+				var mob= document.add.num.value;
+				var mregex=/[6-9]\d{9}$/;
+				var check2=mregex.test(mob);
+
+				var pcode=document.add.pcode.value;
+				var pregex=/^\d{6}$/;
+				var check3=pregex.test(pcode);
+
+				var prim=document.add.prim.value;
+				var sec=document.add.sec.value;
+				var lnd=document.add.lnd.value;
+				var cst=document.add.cst.value;
+
+
+				document.getElementById('go').disabled=true;
+
+				if(name=="")
+				{
+					window.alert("Please Enter a Name.");
+					document.add.name.focus();	
+				}
+
+				else if(check1==false)
+				{
+					window.alert("Enter a valid Full Name.");
+					document.add.fname.focus();
+				}
+
+				else if(mob=="")
+				{
+					window.alert("Please Enter a Mobile Number.");
+					document.add.num.focus();
+				}
+
+				else if(check2==false)
+				{
+					window.alert("Please enter a valid Mobile Number.");
+					document.acc.num.focus();
+				}
+
+				else if(pcode=="")
+				{
+					window.alert("Please Enter a Pin Code.");
+					document.add.pcode.focus();
+				}
+
+				else if(check3==false)
+				{
+					window.alert("Pin Code should have 6 digits.");
+					document.add.pcode.focus();
+				}
+
+				else if(prim=="")
+				{
+					window.alert("Field can't be empty.");
+					document.add.prim.focus();
+				}
+
+				else if(sec=="")
+				{
+					window.alert("Field can't be empty.");
+					document.add.sec.focus();
+				}
+
+				else if(cst=="")
+				{
+					window.alert("Field can't be empty.");
+					document.add.cst.focus();
+				}
+
+				else
+				{
+					document.getElementById('go').disabled=false;
+				}
+			}
+
+			else
+			{
+				var loc=document.getElementsByName('take');
+				document.getElementById('go2').disabled=true;
+				for(i=0;i<loc.length;i++)
+				{
+					if(loc[i].checked)
+					{
+						var l=loc[i].value;
+					}
+				}
+				if(l==null)
+				{
+					window.alert("Please select a location.")
+				}
+				
+			}
+		}
+
+		function proceed(id)
+		{
+			if(id=="fset")
+			{
+				document.getElementById('taway').style.display="none";
+				document.getElementById('fset').style.display="block";
+			}
+			else
+			{
+				document.getElementById('fset').style.display="none";
+				document.getElementById('taway').style.display="block";
+			}
+		}
+</script>
+	
+
+<body>
+
+
+	<center>
+		<div class="transbox">
+			<p>
+			<h4>Please Select An Option</h4>
+			<input type="radio" id="del" name="otyp" value="del" onclick="proceed('fset')">
+			<label for="del">Delivery</label>
+			&nbsp&nbsp&nbsp&nbsp
+			<input type="radio" id="tak" name="otyp" value="tak" onclick="proceed('tak')">
+			<label for="tak">Take-Away</label>
+			</p>
+		</div>
+	</center>
+
+	<br><br>
+
+	<fieldset class="transbox" id="fset" style="display: none;">
+		<legend>Add an Address</legend>
+		<form name="add" action="Pay.php" method="POST">
+
+			<input name="hide" type="hidden" id="hide" value="del"><br>
+
+			<label for="name">Full Name:	</label><br>
+			<input onchange="check_up()" name="name" type="text" id="name" size=20><br><br>
+			
+			<label for="num">Mobile Number: </label><br>
+			<input onchange="check_up()" id="ext" value="+91" readonly size=1></input>
+			&nbsp
+			<input onchange="check_up()" name="num" type="text" id="num" maxlength=10 size=11 placeholder="8797981236"><br><br>
+
+			<label for="pcode">Pin Code: </label><br>
+			<input onchange="check_up()" name="pcode" type="text" id="pcode" maxlength=6 size=6 placeholder="6 digits"><br><br>
+
+			<label for="prim">Flat, House no., Building, Company, Apartment: </label><br>
+			<input onchange="check_up()" name="prim" type="text" id="prim" size=20 ><br><br>
+
+			<label for="sec">Area,Colony,Street,Sector,Village: </label><br>
+			<input onchange="check_up()" name="sec" type="text" id="sec" size=20><br><br>
+
+			<label for="lnd">Landmark: </label><br>
+			<input onchange="check_up()" name="lnd" type="text" id="lnd" size=20 placeholder="Eg: Near School,Bank,etc.">&nbsp &nbsp(optional)<br><br>
+
+			<label for="cst">City,State: </label><br>
+			<input onchange="check_up()" name="cst" type="text" id="cst" size=20><br>
+			<button id='go' class="go" type="submit" onclick="validation()">
+			<span>Proceed to Payment</span></button>
+		</form>
+	</fieldset>
+
+	<fieldset class="transbox" id="taway" style="display: none;">
+		<legend style="font-size: 20px;"><b>Select Store Address</b></legend>
+		<div>
+		
+		<form name="loc" action="Pay.php" method="POST">
+
+		<input name="hide" type="hidden" id="hide" value="tak">
+
+		<div id="map1" style="width:40%; height: 400px; float:right; clear:both;"></div>
+			<div style="margin-left:100px;"><input type="radio" name="take" value="loc1" onchange="check_up()"><b>Location 1:</b><br>
+			<p style="font-family: monospace; font-size: 15px;">Shop 7&8, ShravastiI Building, <br>Near Inorbit Mall, Off, New Link Rd, <br>Sunder Nagar, Malad West, <br>Mumbai, Maharashtra 400064</div> 
+
+			<div style="height:100px;width:100%;clear:both;"></div>
+
+		<div id="map2" style="width:40%; height: 400px; float:right; clear:both;"></div>
+			
+			<div style="margin-left:100px;"><input type="radio" name="take" value="loc2" onchange="check_up()"><b>Location 2:</b><br>
+			<p style="font-family: monospace; font-size: 15px;"> Upvan Building, Shop No. 6 & 7, Metro Station, <br>near D.N.Nagar, Madhuban Colony,<br> D.N.Nagar, Andheri West,<br> Mumbai, Maharashtra 400053</p></div> 
+		</div>
+
+		<div style="height:100px;width:100px;clear:both;"></div>
+		
+		<button id='go' class="go" type="submit" onclick="validation()">
+			<span>Proceed to Payment</span></button>	
+		</form>
+	</fieldset>
+	<br><br>
+</body>
+<script>
+function Gmaps()
+		{
+			var l1= new google.maps.Map(document.getElementById("map1"), {center:{lat: 23.214680, lng:77.435052},zoom:5});
+			var l2= new google.maps.Map(document.getElementById("map2"), {center:{lat: 19.074966, lng:72.878568},zoom:5});
+		}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=Gmaps"></script>
+</html>

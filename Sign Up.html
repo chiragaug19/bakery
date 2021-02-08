@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Sign Up</title>
+</head>
+<script>
+	function check_up(){
+  		document.getElementById('submit').disabled=false;	
+	}
+
+	function validation()
+	{
+		var fname=document.acc.fname.value;
+		var lname=document.acc.lname.value;
+		var mob=document.acc.num.value;
+		var email=document.acc.email.value;
+		var pass=document.acc.pass.value;
+		var repass=document.acc.repass.value;
+
+		var nregex=/^[A-Za-z]*$/;
+		var check1=nregex.test(fname);
+		var check2=nregex.test(lname);
+		
+		var mregex=/[6-9]\d{9}$/;
+		var check3=mregex.test(mob);
+		
+		var atposition=email.indexOf("@");  
+		var dotposition=email.lastIndexOf(".");
+
+		document.getElementById('submit').disabled=true;
+
+		if(fname=="")
+		{
+			window.alert("Please Enter a First Name.");
+			document.acc.fname.focus();
+		}
+
+		else if(check1==false)
+		{
+			window.alert("First Name can't consist of numeric values or spaces.");
+			document.acc.fname.focus();
+		}
+		
+		else if(lname=="")
+		{
+			window.alert("Please Enter a Last Name.");
+			document.acc.lname.focus();
+		}
+
+		else if(check2==false)
+		{
+			window.alert("Last Name can't consist of numeric values or spaces.");
+			document.acc.lname.focus();
+			document.acc.lname.Select();
+		}
+
+		else if(document.acc.num.value=="")
+		{
+			window.alert("Please Enter a Mobile Number.");
+			document.acc.num.focus();
+		}
+
+		else if(check3==false)
+		{
+			window.alert("Please enter a valid Mobile Number.");
+			document.acc.num.focus();
+		}
+
+		else if(email=="")
+		{
+			window.alert("Please Enter an Email Address.");
+			document.acc.email.focus();
+		}
+
+		else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length)
+		{  
+ 			 window.alert("Please enter a valid e-mail address\n @(at) postion:"+atposition+"\n .(dot) position:"+dotposition);
+ 			 document.acc.email.focus();
+ 		}  
+
+ 		else if (pass=="")
+ 		{
+ 			window.alert("Please Enter a Password.")
+ 			document.acc.pass.focus();
+
+ 		}
+
+ 		else if (pass.length<6)
+ 		{
+ 			window.alert("Password must be of atleast 6 characters.");
+ 			document.acc.pass.focus();
+ 		}
+
+ 		else if (repass=="")
+		{
+			window.alert("Please Re-enter the Password.");
+			document.acc.pass.focus();
+		}
+
+		else if(pass!=repass)
+		{
+			window.alert("Paswords do not match.");
+			document.acc.pass.focus();
+		}
+		
+		else
+		{
+			document.getElementById('submit').disabled=false;
+		}
+
+	}
+</script>
+<body style="background: url(no-recipe-required-pound-cake-30082016.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  background-position: center;">
+	<div style="color: white; background-color: darkcyan; size: 100%; overflow:hidden; width:100%";>
+		<center><h1>Welcome To HotPot Bakery!</h1></center></div><br><br>
+	<fieldset style="padding-left: 50px; padding-top: 0px;	margin-right: 50px;	margin-left:50px; 
+					 background-color:rgb(255,255,255,0.7);		border: 1px solid black;">
+		<legend><h3>Account Details</h3></legend><br>
+			<h3 style="padding: 0px"> Please fill the fields for Creating an Account:</h3>
+		<form name="acc" action="Sign.php" method="POST">
+			<label for="fname">First Name:	</label> &nbsp&nbsp&nbsp&nbsp
+			<input name="fname" type="text" id="fname" size=20 onchange="check_up()"><br><br>
+			<label for="lname">Last Name:	</label> &nbsp&nbsp&nbsp&nbsp&nbsp
+			<input name="lname" type="text" id="lname" size=20 onchange="check_up()"><br><br>
+			<label for="num">Mobile Number: </label> &nbsp&nbsp
+			<input id="ext" value="+91" readonly size=1 onchange="check_up()"></input>
+			<input name="num" type="text" id="num" size=14 placeholder="8797981236" onchange="check_up()"><br><br>
+			<label for="email">Email Address:	</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input name="email" type="email" id="email" size=20 placeholder="abc@email.com" onchange="check_up()"><br><br>
+			<label for="pass">Enter a Password:</label> &nbsp&nbsp&nbsp
+			<input name="pass" type="password" id="pass" size=20 placeholder="Atleast 6 characters." onchange="check_up()"><br><br>
+			<label for="repass">Re-enter Password:</label> &nbsp
+			<input name="repass" type="password" id="repass" size=20 placeholder="Passwords must match." onchange="check_up()">
+			<br><br>
+			<input id='submit' style="cursor:pointer; background-color: blue; color: white; border-color: black" type="submit" onclick="validation()">
+			<input style="cursor:pointer; background-color: red; color: white; border-color: black;" type="reset" onclick="acc.reset()">
+		</form>
+		<p style="color: white;"><center>Already have an account? <a href="Log In.html">Click here</a> to log in</center></p>
+	</fieldset>
+<p id="done"></p>
+</body>
+</html>
